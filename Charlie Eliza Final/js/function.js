@@ -11,7 +11,7 @@ var gameBoard = [
 
 function setup() {
   // set canvas size
-  createCanvas(600, 600);
+  createCanvas(606, 606);
 };
 
 function draw() {
@@ -27,13 +27,20 @@ function draw() {
 
   // draw a rectangle
   rect(2, 2, 100, 100);
+  rect(2, 102, 100, 100);
+  rect(2, 202, 100, 100);
+  rect(2, 302, 100, 100);
+  rect(2, 402, 100, 100);
+  rect(2, 502, 100, 100);
 
-  // set a new fill color
-  fill(255, 0, 0);
+  rect(102, 2, 100, 100);
+  rect(202, 2, 100, 100);
+  rect(302, 2, 100, 100);
+  rect(402, 2, 100, 100);
+  rect(502, 2, 100, 100);
 
-  // set a new stroke property
-  // noStroke();
 
-  // draw a triangle
-  // triangle(200, 150, 250, 25, 310, 150);
+
+
+
 };
