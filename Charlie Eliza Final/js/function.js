@@ -9,6 +9,19 @@ var gameBoard = [
   [{x:2, y:502}, {x:102, y:502}, {x:202, y:502}, {x:302, y:502}, {x:402, y:502}, {x:502, y:502}]
 ];
 
+
+
+
+document.onmousemove = handleMouseMove;
+function handleMouseMove(event) {
+  var mouseX = event.clientX;     // Get the horizontal coordinate
+  var mouseY = event.clientY;     // Get the vertical coordinate
+  var coor = "X coords: " + mouseX + ", Y coords: " + mouseY;
+  console.log(coor);
+}
+
+
+
 var black = 0
 var white = 255
 var color = 0
