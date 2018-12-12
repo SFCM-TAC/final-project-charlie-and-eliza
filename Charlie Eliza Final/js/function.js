@@ -9,7 +9,7 @@ var gameBoard = [
   [{x:2, y:502}, {x:102, y:502}, {x:202, y:502}, {x:302, y:502}, {x:402, y:502}, {x:502, y:502}]
 ];
 
-var pieces = []
+var pieces = [];
 
 // var coor = ""
 // document.onmousemove = handleMouseMove;
@@ -21,48 +21,66 @@ var pieces = []
 // };
 
 
-
-
-
-var black = 0
-var white = 255
 var color = 0
 
-function setup() {
-  // set canvas size
-  createCanvas(605, 605);
-};
-
-// function mousePressed() {
-//   if (color === black) {
-//     color = white;
-//   } else {
-//     color = black;
-//   }
-//   console.log(color)
-// }
-
-
-// function mouseClicked() {
-//   ellipse(mouseX, mouseY, 85, 85);
-//   // draw();
-//   // prevent default
-//   // return false;
-// };
+function mousePressed() {
+  if (color === 0) {
+    color = 255;
+  } else {
+    color = 0;
+  }
+  console.log(color)
+}
 
 var positionX = ""
 var positionY = ""
-// var piecePosition = {x:positionX, y:positionY}
-
 
 function mouseClicked() {
   positionX = mouseX
   positionY = mouseY
-  var piecePosition = {x:positionX, y:positionY}
+
+  if (positionX <= 100) {
+    positionX = 52;
+  } else if (positionX <= 200) {
+    positionX = 152;
+  } else if (positionX <= 300) {
+    positionX = 252;
+  } else if (positionX <= 400) {
+    positionX = 352;
+  } else if (positionX <= 500) {
+    positionX = 452;
+  } else if (positionX <= 600) {
+    positionX = 552;
+  } else {
+    positionX = positionX
+  }
+
+  if (positionY <= 100) {
+    positionY = 52;
+  } else if (positionY <= 200) {
+    positionY = 152;
+  } else if (positionY <= 300) {
+    positionY = 252;
+  } else if (positionY <= 400) {
+    positionY = 352;
+  } else if (positionY <= 500) {
+    positionY = 452;
+  } else if (positionY <= 600) {
+    positionY = 552;
+  } else {
+    positionY = positionY
+  }
+
+  var piecePosition = {x:positionX, y:positionY, pieceColor:color}
   pieces.push(piecePosition);
   redraw();
   console.log(positionX, positionY);
-  console.log(pieces);
+  // console.log(pieces);
+};
+
+function setup() {
+  // set canvas size
+  createCanvas(605, 605);
 };
 
 function draw() {
@@ -83,24 +101,19 @@ function draw() {
   };
 
   pieces.forEach(createPiece);
-
   function createPiece(item) {
-    piece(item.x, item.y)
+    piece(item.x, item.y, item.pieceColor)
   };
-
-
-  // piece(positionX, positionY);
-
-
-
+  
+  piece(mouseX, mouseY, 100);
 
 };
 
-function piece(x, y) {
+function piece(x, y, pieceColor) {
   noStroke();
   stroke(255, 255, 255);
   strokeWeight(3);
-  fill(0, 0, 0);
+  fill(pieceColor);
   ellipse(x, y, 85, 85);
 };
 
