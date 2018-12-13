@@ -10,7 +10,12 @@ var gameBoard = [
 ];
 
 // stores all the pieces in objects
-var pieces = [{x:252, y:252, pieceColor:0}, {x:352, y:252, pieceColor:252}, {x:252, y:352, pieceColor:255}, {x:352, y:352, pieceColor:0}];
+
+var blackPieces = [{x:252, y:252}, {x:352, y:352}]
+var whitePieces = [{x:352, y:252}, {x:252, y:352}]
+
+
+
 
 // var coor = ""
 // document.onmousemove = handleMouseMove;
@@ -21,14 +26,23 @@ var pieces = [{x:252, y:252, pieceColor:0}, {x:352, y:252, pieceColor:252}, {x:2
 //   // console.log(coor);
 // };
 
+var blackScore = blackPieces.length
+var whiteScore = whitePieces.length
 
-var color = 0
+function calculateScore() {
+  blackScore = blackPieces.length
+  whiteScore = whitePieces.length
+};
+
+var thePieceColor = 0
+
+
 
 function mousePressed() {
-  if (color === 0) {
-    color = 255;
+  if (thePieceColor === 0) {
+    thePieceColor = 255;
   } else {
-    color = 0;
+    thePieceColor = 0;
   }
   // console.log(color)
 }
@@ -72,9 +86,16 @@ function mouseClicked() {
     positionY = positionY
   }
 
-  var piecePosition = {x:positionX, y:positionY, pieceColor:color}
-  pieces.push(piecePosition);
+  // var piecePosition = {x:positionX, y:positionY, pieceColor:color}
+  var piecePosition = {x:positionX, y:positionY}
+
+  if (thePieceColor === 0) {
+    blackPieces.push(piecePosition);
+  } else {
+    whitePieces.push(piecePosition);
+  }
   redraw();
+  calculateScore();
   console.log(positionX, positionY);
   // console.log(pieces);
 };
@@ -101,22 +122,47 @@ function draw() {
     rect(item.x, item.y, 100, 100)
   };
 
-  pieces.forEach(createPiece);
-  function createPiece(item) {
-    piece(item.x, item.y, item.pieceColor)
+
+  blackPieces.forEach(createBlackPiece);
+  function createBlackPiece(item) {
+    blackPiece(item.x, item.y)
   };
 
-  piece(mouseX, mouseY, 100);
+  whitePieces.forEach(createWhitePiece);
+  function createWhitePiece(item) {
+    whitePiece(item.x, item.y)
+  };
+
+  piece(mouseX, mouseY, thePieceColor);
 
 };
 
-function piece(x, y, pieceColor) {
+function piece(x, y, assignedColor) {
   noStroke();
   stroke(255, 255, 255);
   strokeWeight(3);
-  fill(pieceColor);
+  fill(assignedColor);
   ellipse(x, y, 85, 85);
 };
+
+function blackPiece(x, y) {
+  noStroke();
+  stroke(255, 255, 255);
+  strokeWeight(3);
+  fill(0);
+  ellipse(x, y, 85, 85);
+};
+
+function whitePiece(x, y) {
+  noStroke();
+  stroke(255, 255, 255);
+  strokeWeight(3);
+  fill(255);
+  ellipse(x, y, 85, 85);
+};
+
+
+
 
 // noStroke();
 // stroke(255, 255, 255);
