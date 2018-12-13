@@ -14,6 +14,18 @@ var gameBoard = [
 var blackPieces = [{x:252, y:252}, {x:352, y:352}]
 var whitePieces = [{x:352, y:252}, {x:252, y:352}]
 
+var piecesToFlip = []
+
+function flipBlackPiece() {
+
+  for( var i = 0; i < blackPieces.length-1; i++){
+   if ( blackPieces[i].x == piecesToFlip.x && blackPieces[i].y == piecesToFlip.y) {
+    blackPieces.splice(i, 1);
+    whitePieces.push(piecesToFlip)
+    break;
+   }
+ }
+};
 
 
 
@@ -158,18 +170,3 @@ function whitePiece(x, y) {
   fill(255);
   ellipse(x, y, 85, 85);
 };
-
-
-
-
-// noStroke();
-// stroke(255, 255, 255);
-// strokeWeight(3);
-// fill(0, 0, 0);
-// ellipse(52, 52, 85, 85);
-
-// noStroke();
-// stroke(0, 0, 0);
-// strokeWeight(3);
-// fill(255, 255, 255);
-// ellipse(152, 152, 85, 85);
