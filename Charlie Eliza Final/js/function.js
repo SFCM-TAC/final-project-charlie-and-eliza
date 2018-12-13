@@ -36,9 +36,7 @@ function calculateScore() {
 
 var thePieceColor = 0
 
-
-
-function mousePressed() {
+function mouseClicked() {
   if (thePieceColor === 0) {
     thePieceColor = 255;
   } else {
@@ -50,7 +48,7 @@ function mousePressed() {
 var positionX = ""
 var positionY = ""
 
-function mouseClicked() {
+function mousePressed() {
   positionX = mouseX
   positionY = mouseY
 
