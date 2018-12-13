@@ -9,7 +9,8 @@ var gameBoard = [
   [{x:2, y:502}, {x:102, y:502}, {x:202, y:502}, {x:302, y:502}, {x:402, y:502}, {x:502, y:502}]
 ];
 
-var pieces = [];
+// stores all the pieces in objects
+var pieces = [{x:252, y:252, pieceColor:0}, {x:352, y:252, pieceColor:252}, {x:252, y:352, pieceColor:255}, {x:352, y:352, pieceColor:0}];
 
 // var coor = ""
 // document.onmousemove = handleMouseMove;
@@ -29,7 +30,7 @@ function mousePressed() {
   } else {
     color = 0;
   }
-  console.log(color)
+  // console.log(color)
 }
 
 var positionX = ""
@@ -104,7 +105,7 @@ function draw() {
   function createPiece(item) {
     piece(item.x, item.y, item.pieceColor)
   };
-  
+
   piece(mouseX, mouseY, 100);
 
 };
