@@ -52,7 +52,7 @@ function gameWinner() {
     alert("BLACK wins!");
   } else if (blackScore + whiteScore == 36 && blackScore < whiteScore) {
     alert("WHITE wins!");
-  } else {
+  } else  if (blackScore == 18 && whiteScore == 18){
     alert("TIE");
   }
 };
