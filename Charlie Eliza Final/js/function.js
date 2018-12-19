@@ -14,35 +14,50 @@ var gameBoard = [
 var blackPieces = [{x:252, y:252}, {x:352, y:352}]
 var whitePieces = [{x:352, y:252}, {x:252, y:352}]
 
-// stores the pieces that are between pieces of a different color
-var piecesToFlip = []
+function lookAtPiece() {
+  for (var i = 0; i < blackPieces.length; i++) {
+    if (positionX == blackPieces[i].x && positionY == blackPieces[i].y) {
+      blackPieces.splice(i, 1);
+      break;
+      // whitePieces.push({x:positionX, y:positionY})
+    } else {
+      console.log('NOPE black')
+    } //break;
+  }
 
-function flipBlackPiece() {
-
-  for( var i = 0; i < blackPieces.length-1; i++){
-   if ( blackPieces[i].x == piecesToFlip.x && blackPieces[i].y == piecesToFlip.y) {
-    blackPieces.splice(i, 1);
-    whitePieces.push(piecesToFlip)
-    break;
-   }
- }
+  for (var i = 0; i < whitePieces.length; i++) {
+    if (positionX == whitePieces[i].x && positionY == whitePieces[i].y) {
+      whitePieces.splice(i, 1);
+       break;
+      // whitePieces.push({x:positionX, y:positionY})
+    } else {
+      console.log('NOPE white')
+    } //break;
+  }
+  redraw();
+  calculateScore();
 };
 
+
+var mouseX2
+var mouseY2
 var coor = ""
 document.onmousemove = handleMouseMove;
 function handleMouseMove(event) {
-  var mouseX2 = event.clientX;     // Get the horizontal coordinate
-  var mouseY2 = event.clientY;     // Get the vertical coordinate
+  mouseX2 = event.clientX;     // Get the horizontal coordinate
+  mouseY2 = event.clientY;     // Get the vertical coordinate
   coor = "X coords: " + mouseX2 + ", Y coords: " + mouseY2;
   // console.log(coor);
+
 };
 
-var blackScore = blackPieces.length
-var whiteScore = whitePieces.length
+var blackScore = 2
+var whiteScore = 2
 
 function calculateScore() {
   blackScore = blackPieces.length
   whiteScore = whitePieces.length
+  playerScores();
 };
 
 var thePieceColor = 0;
@@ -57,24 +72,13 @@ function gameWinner() {
   }
 };
 
-
-// function mouseClicked() {
-//   if (thePieceColor === 0) {
-//     thePieceColor = 255;
-//   } else {
-//     thePieceColor = 0;
-//   }
-//   // console.log(color)
-// };
-
-
-
 var positionX = ""
 var positionY = ""
 
 function mousePressed() {
   positionX = mouseX
   positionY = mouseY
+
 
   if (positionX <= 100 && positionX > 0) {
     positionX = 52;
@@ -108,6 +112,8 @@ function mousePressed() {
     positionY = positionY
   }
 
+  lookAtPiece();
+
   // var piecePosition = {x:positionX, y:positionY, pieceColor:color}
   var piecePosition = {x:positionX, y:positionY}
 
@@ -119,11 +125,6 @@ function mousePressed() {
   }
   redraw();
   calculateScore();
-  playerScores();
-  // console.log(positionX, positionY);
-  // console.log(pieces);
-  console.log(mouseX);
-  console.log(mouseY);
 };
 
 function setup() {
@@ -207,9 +208,9 @@ function whiteTurn() {
 
 
 document.addEventListener("DOMContentLoaded", function() {
-  // this code block runs when the page finishes loading
-  // and attaches listeners for button clicks
-  // e.g. when the diceButton is clicked, it will run the handleDiceRoll function
+  playerScores();
+
+
   const blacksTurnButton = document.getElementById('blacksTurn');
   if (blacksTurnButton) {
     blacksTurnButton.addEventListener('click', blackTurn);
