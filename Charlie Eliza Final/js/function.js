@@ -56,7 +56,7 @@ function gameWinner(){
 }
 
 
-function mousePressed() {
+function mouseClicked() {
   if (thePieceColor === 0) {
     thePieceColor = 255;
   } else {
@@ -68,7 +68,7 @@ function mousePressed() {
 var positionX = ""
 var positionY = ""
 
-function mouseClicked() {
+function mousePressed() {
   positionX = mouseX
   positionY = mouseY
 
@@ -114,6 +114,7 @@ function mouseClicked() {
   }
   redraw();
   calculateScore();
+  playerScores();
   console.log(positionX, positionY);
   // console.log(pieces);
 };
@@ -177,4 +178,14 @@ function whitePiece(x, y) {
   strokeWeight(3);
   fill(255);
   ellipse(x, y, 85, 85);
+};
+
+function playerScores() {
+  const resultElement = document.getElementById('blackScore');
+  const resultElement2 = document.getElementById('whiteScore');
+
+  const blackResult = blackScore;
+  resultElement.innerHTML = blackResult;
+  const whiteResult = whiteScore;
+  resultElement2.innerHTML = whiteResult;
 };
