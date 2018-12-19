@@ -47,13 +47,12 @@ function calculateScore() {
 
 var thePieceColor = 0;
 
-
-var msg;
+var alert;
 function gameWinner() {
   if (blackScore > 18) {
-    msg = "BLACK wins!";
+    alert("BLACK wins!");
   } else {
-    msg = "WHITE wins!";
+    alert("WHITE wins!");
   }
 };
 
