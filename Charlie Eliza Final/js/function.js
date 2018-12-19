@@ -58,14 +58,14 @@ function gameWinner() {
 };
 
 
-function mouseClicked() {
-  if (thePieceColor === 0) {
-    thePieceColor = 255;
-  } else {
-    thePieceColor = 0;
-  }
-  // console.log(color)
-};
+// function mouseClicked() {
+//   if (thePieceColor === 0) {
+//     thePieceColor = 255;
+//   } else {
+//     thePieceColor = 0;
+//   }
+//   // console.log(color)
+// };
 
 
 
@@ -196,3 +196,27 @@ function playerScores() {
   const whiteResult = whiteScore;
   resultElement2.innerHTML = whiteResult;
 };
+
+function blackTurn() {
+  thePieceColor = 0;
+};
+
+function whiteTurn() {
+  thePieceColor = 255;
+};
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  // this code block runs when the page finishes loading
+  // and attaches listeners for button clicks
+  // e.g. when the diceButton is clicked, it will run the handleDiceRoll function
+  const blacksTurnButton = document.getElementById('blacksTurn');
+  if (blacksTurnButton) {
+    blacksTurnButton.addEventListener('click', blackTurn);
+  }
+
+  const whitesTurnButton = document.getElementById('whitesTurn');
+  if (whitesTurnButton) {
+    whitesTurnButton.addEventListener('click', whiteTurn);
+  }
+});

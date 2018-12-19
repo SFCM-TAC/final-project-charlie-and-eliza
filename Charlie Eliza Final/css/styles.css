@@ -22,3 +22,11 @@ h2 {
   float: right;
   font-size: 40px;
 }
+.button {
+  color: black;
+  text: white;
+  background-color: hotpink;
+  float: right;
+  clear: both;
+  font-size: 40px;
+}
