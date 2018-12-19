@@ -23,10 +23,18 @@ h2 {
   font-size: 40px;
 }
 .button {
-  color: black;
   text: white;
-  background-color: hotpink;
   float: right;
   clear: both;
   font-size: 40px;
+}
+#blacksTurn {
+  color: white;
+  background-color: black;
+  width: 400px;
+}
+#whitesTurn {
+  color: black;
+  background-color: white;
+  width: 400px;
 }
