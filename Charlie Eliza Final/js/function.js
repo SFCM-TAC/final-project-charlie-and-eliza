@@ -47,13 +47,15 @@ function calculateScore() {
 
 var thePieceColor = 0;
 
-function gameWinner(){
+
+var msg;
+function gameWinner() {
   if (blackScore > 18) {
     msg = "BLACK wins!";
   } else {
     msg = "WHITE wins!";
   }
-}
+};
 
 
 function mouseClicked() {
