@@ -19,36 +19,19 @@ function lookAtPiece() {
     if (positionX == blackPieces[i].x && positionY == blackPieces[i].y) {
       blackPieces.splice(i, 1);
       break;
-      // whitePieces.push({x:positionX, y:positionY})
     } else {
-      console.log('NOPE black')
-    } //break;
+    }
   }
 
   for (var i = 0; i < whitePieces.length; i++) {
     if (positionX == whitePieces[i].x && positionY == whitePieces[i].y) {
       whitePieces.splice(i, 1);
        break;
-      // whitePieces.push({x:positionX, y:positionY})
     } else {
-      console.log('NOPE white')
-    } //break;
+    }
   }
   redraw();
   calculateScore();
-};
-
-
-var mouseX2
-var mouseY2
-var coor = ""
-document.onmousemove = handleMouseMove;
-function handleMouseMove(event) {
-  mouseX2 = event.clientX;     // Get the horizontal coordinate
-  mouseY2 = event.clientY;     // Get the vertical coordinate
-  coor = "X coords: " + mouseX2 + ", Y coords: " + mouseY2;
-  // console.log(coor);
-
 };
 
 var blackScore = 2
@@ -58,16 +41,19 @@ function calculateScore() {
   blackScore = blackPieces.length
   whiteScore = whitePieces.length
   playerScores();
+  gameWinner();
 };
 
 var thePieceColor = 0;
 
 var alert;
 function gameWinner() {
-  if (blackScore > 18) {
+  if (blackScore + whiteScore == 36 && blackScore > whiteScore) {
     alert("BLACK wins!");
-  } else {
+  } else if (blackScore + whiteScore == 36 && blackScore < whiteScore) {
     alert("WHITE wins!");
+  } else {
+    alert("TIE");
   }
 };
 
@@ -113,7 +99,6 @@ function mousePressed() {
 
   lookAtPiece();
 
-  // var piecePosition = {x:positionX, y:positionY, pieceColor:color}
   var piecePosition = {x:positionX, y:positionY}
 
   if (thePieceColor === 0  && positionX >= 52 && positionX <= 552 && positionY >= 52 && positionY <= 552 )
