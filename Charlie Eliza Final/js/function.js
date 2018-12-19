@@ -28,14 +28,14 @@ function flipBlackPiece() {
  }
 };
 
-// var coor = ""
-// document.onmousemove = handleMouseMove;
-// function handleMouseMove(event) {
-//   var mouseX = event.clientX;     // Get the horizontal coordinate
-//   var mouseY = event.clientY;     // Get the vertical coordinate
-//   coor = "X coords: " + mouseX + ", Y coords: " + mouseY;
-//   // console.log(coor);
-// };
+var coor = ""
+document.onmousemove = handleMouseMove;
+function handleMouseMove(event) {
+  var mouseX2 = event.clientX;     // Get the horizontal coordinate
+  var mouseY2 = event.clientY;     // Get the vertical coordinate
+  coor = "X coords: " + mouseX2 + ", Y coords: " + mouseY2;
+  // console.log(coor);
+};
 
 var blackScore = blackPieces.length
 var whiteScore = whitePieces.length
@@ -65,7 +65,9 @@ function mouseClicked() {
     thePieceColor = 0;
   }
   // console.log(color)
-}
+};
+
+
 
 var positionX = ""
 var positionY = ""
@@ -74,33 +76,33 @@ function mousePressed() {
   positionX = mouseX
   positionY = mouseY
 
-  if (positionX <= 100) {
+  if (positionX <= 100 && positionX > 0) {
     positionX = 52;
-  } else if (positionX <= 200) {
+  } else if (positionX <= 200 && positionX > 0) {
     positionX = 152;
-  } else if (positionX <= 300) {
+  } else if (positionX <= 300 && positionX > 0) {
     positionX = 252;
-  } else if (positionX <= 400) {
+  } else if (positionX <= 400 && positionX > 0) {
     positionX = 352;
-  } else if (positionX <= 500) {
+  } else if (positionX <= 500 && positionX > 0) {
     positionX = 452;
-  } else if (positionX <= 600) {
+  } else if (positionX <= 600 && positionX > 0) {
     positionX = 552;
   } else {
     positionX = positionX
   }
 
-  if (positionY <= 100) {
+  if (positionY <= 100 && positionY > 0) {
     positionY = 52;
-  } else if (positionY <= 200) {
+  } else if (positionY <= 200 && positionY > 0) {
     positionY = 152;
-  } else if (positionY <= 300) {
+  } else if (positionY <= 300 && positionY > 0) {
     positionY = 252;
-  } else if (positionY <= 400) {
+  } else if (positionY <= 400 && positionY > 0) {
     positionY = 352;
-  } else if (positionY <= 500) {
+  } else if (positionY <= 500 && positionY > 0) {
     positionY = 452;
-  } else if (positionY <= 600) {
+  } else if (positionY <= 600 && positionY > 0) {
     positionY = 552;
   } else {
     positionY = positionY
@@ -109,16 +111,19 @@ function mousePressed() {
   // var piecePosition = {x:positionX, y:positionY, pieceColor:color}
   var piecePosition = {x:positionX, y:positionY}
 
-  if (thePieceColor === 0) {
+  if (thePieceColor === 0  && positionX >= 52 && positionX <= 552 && positionY >= 52 && positionY <= 552 )
+  {
     blackPieces.push(piecePosition);
-  } else {
+  } else if (positionX >= 52 && positionX <= 552 && positionY >= 52 && positionY <= 552) {
     whitePieces.push(piecePosition);
   }
   redraw();
   calculateScore();
   playerScores();
-  console.log(positionX, positionY);
+  // console.log(positionX, positionY);
   // console.log(pieces);
+  console.log(mouseX);
+  console.log(mouseY);
 };
 
 function setup() {
