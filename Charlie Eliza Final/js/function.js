@@ -14,7 +14,7 @@ var gameBoard = [
 var blackPieces = [{x:252, y:252}, {x:352, y:352}]
 var whitePieces = [{x:352, y:252}, {x:252, y:352}]
 
-
+var msg;
 
 
 // var coor = ""
@@ -34,9 +34,18 @@ function calculateScore() {
   whiteScore = whitePieces.length
 };
 
-var thePieceColor = 0
+var thePieceColor = 0;
 
-function mouseClicked() {
+function gameWinner(){
+  if (blackScore > 18) {
+    msg = "BLACK wins!";
+  } else {
+    msg = "WHITE wins!";
+  }
+}
+
+
+function mousePressed() {
   if (thePieceColor === 0) {
     thePieceColor = 255;
   } else {
@@ -48,7 +57,7 @@ function mouseClicked() {
 var positionX = ""
 var positionY = ""
 
-function mousePressed() {
+function mouseClicked() {
   positionX = mouseX
   positionY = mouseY
 
@@ -158,8 +167,6 @@ function whitePiece(x, y) {
   fill(255);
   ellipse(x, y, 85, 85);
 };
-
-
 
 
 // noStroke();
