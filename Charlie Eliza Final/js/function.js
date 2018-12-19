@@ -14,6 +14,7 @@ var gameBoard = [
 var blackPieces = [{x:252, y:252}, {x:352, y:352}]
 var whitePieces = [{x:352, y:252}, {x:252, y:352}]
 
+// stores the pieces that are between pieces of a different color
 var piecesToFlip = []
 
 function flipBlackPiece() {
@@ -26,8 +27,6 @@ function flipBlackPiece() {
    }
  }
 };
-
-
 
 // var coor = ""
 // document.onmousemove = handleMouseMove;
